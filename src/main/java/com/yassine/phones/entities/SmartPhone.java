@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -34,6 +35,15 @@ public class SmartPhone {
 
     @Column(name = "DATE_CREATION")
     private Date dateCreation;
+    
+    @ManyToOne
+    private Type type;
+    public Type getType() {
+    	return type;
+    	}
+    	public void setType(Type type) {
+    	this.type = type;
+    	}
 
     public SmartPhone() {
         super();
