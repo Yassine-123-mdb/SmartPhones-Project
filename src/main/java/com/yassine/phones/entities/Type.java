@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Type {
+<<<<<<< HEAD
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idType;
@@ -25,3 +26,14 @@ public class Type {
     @OneToMany(mappedBy = "type")
     private List<SmartPhone> smartPhones;
 }
+=======
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idType;
+	private String nomType;
+	private String descriptionType;
+	@JsonIgnore
+	@OneToMany(mappedBy = "type")
+	private List<SmartPhone> SmartPhone;
+}
+>>>>>>> 4a20a5763b2431a4c780c43afdb4208ae581d607

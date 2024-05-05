@@ -27,6 +27,30 @@
 						<th>Types:</th>
 						<th>Editer</th>
 						<th>Supprimer</th>
+<<<<<<< HEAD
+=======
+                        
+                    </tr>
+                    <tr th:each="phone : ${phones.content}">
+                        <td th:text="${phone.id}"></td>
+                        <td th:text="${phone.marque}"></td>
+                        <td th:text="${phone.couleur}"></td>
+                        <td th:text="${phone.prix}"></td>
+                        <td th:text="${phone.ram}"></td>
+                        <td th:text="${phone.stockage}"></td>
+                        <td th:text="${phone.dateCreation}"></td>
+						<td><a class="btn btn-success" th:href="@{editerSmartPhone(id=${phone.id}, page=${currentPage},size=${size})}">Editer</a></td>
+						<td><a class="btn btn-danger" th:href="@{supprimerPhones(id=${phone.id},page=${currentPage},size=${size})}">Supprimer</a></td>
+                    </tr>
+                </table>
+				<ul class="nav nav-pills">
+				 <li th:each="page,status:${pages}">e
+				 <a th:class="${status.index==currentPage?'btn btn-primary':'btn' }"
+				 th:href="@{ ListePhones(page=${status.index}, size=${size} ) }"
+				 th:text="${status.index }"></a>
+				 </li>
+				 </ul>
+>>>>>>> 4a20a5763b2431a4c780c43afdb4208ae581d607
 
 					</tr>
 					<tr th:each="phone : ${phones.content}">

@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+<<<<<<< HEAD
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -18,6 +19,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
+=======
+>>>>>>> 4a20a5763b2431a4c780c43afdb4208ae581d607
 
 
 @Entity
@@ -53,6 +56,15 @@ public class SmartPhone {
     @PastOrPresent
 
     private Date dateCreation;
+    
+    @ManyToOne
+    private Type type;
+    public Type getType() {
+    	return type;
+    	}
+    	public void setType(Type type) {
+    	this.type = type;
+    	}
 
     @ManyToOne
     private Type type;
