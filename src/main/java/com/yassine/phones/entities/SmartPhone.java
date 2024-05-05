@@ -1,15 +1,27 @@
 package com.yassine.phones.entities;
 
-
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
+@Table(name = "smartphone")
 public class SmartPhone {
 
     @Id
@@ -17,13 +29,16 @@ public class SmartPhone {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "MARQUE")
+    @NotNull
+    @Size (min = 4,max = 15)
     private String marque;
 
     @Column(name = "COULEUR")
     private String couleur;
 
-    @Column(name = "PRIX")
+    @NotNull
+    @Min(value = 10)
+    @Max(value = 10000)
     private Double prix;
 
     @Column(name = "RAM")
@@ -32,8 +47,23 @@ public class SmartPhone {
     @Column(name = "STOCKAGE")
     private Integer stockage;
 
-    @Column(name = "DATE_CREATION")
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent
+
     private Date dateCreation;
+
+    @ManyToOne
+    private Type type;
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public SmartPhone() {
         super();
@@ -107,7 +137,7 @@ public class SmartPhone {
 
     @Override
     public String toString() {
-        return "SmartPhone [id=" + id + ", marque=" + marque + ", couleur=" + couleur + ", prix=" + prix + ", ram=" + ram
-                + ", stockage=" + stockage + ", dateCreation=" + dateCreation + "]";
+        return "SmartPhone [id=" + id + ", marque=" + marque + ", couleur=" + couleur + ", prix=" + prix + ", ram="
+                + ram + ", stockage=" + stockage + ", dateCreation=" + dateCreation + "]";
     }
 }
